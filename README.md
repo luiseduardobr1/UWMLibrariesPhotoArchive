@@ -13,7 +13,7 @@ Just change the link address in code:
 link='https://collections.lib.uwm.edu/digital/collection/ags_south/search/searchterm/Cear%C3%A1%20(state)/field/statep/mode/exact/conn/and/page/'+str(page)
 ...
 ```
-**Important**: Maintain the same pattern. 
+**Important**: maintain the same pattern. 
 
 After that, all photos from "UWM Libraries - AGSL Digital Photo Archive" link will be downloaded and saved in *PhotosFolder*. 
 
