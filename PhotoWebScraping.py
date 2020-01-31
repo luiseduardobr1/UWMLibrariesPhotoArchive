@@ -21,12 +21,13 @@ try:
 except FileExistsError:
     print("Directory " , dirName ,  " already exists")
 
+counter=0
 # Loop through the website's pages
 for page in range(1,pages_number+1):
    
     # Get Link and Change page number - Edit if necessary !
     #link = 'https://collections.lib.uwm.edu/digital/collection/ags_south/search/searchterm/Fortaleza/field/citypl/mode/exact/conn/and/page/'+str(page)
-    link='https://collections.lib.uwm.edu/digital/collection/ags_south/search/searchterm/Cear%C3%A1%20(state)/field/statep/mode/exact/conn/and/page/'+str(page)   
+    link='https://collections.lib.uwm.edu/digital/search/searchterm/manaus/field/all/mode/all/conn/and/order/title/ad/asc/page/'+str(page)   
     driver.get(link)
     time.sleep(2)
     data = driver.execute_script("return document.getElementsByTagName('html')[0].innerHTML")
@@ -37,14 +38,17 @@ for page in range(1,pages_number+1):
     for line in soup.findAll(class_="SearchResult-container shared-search-box shared-box row SearchResult cdm-item-card"):
         name=line.text
         tags=str(line)
-        endereco=tags[315:352]
+        inicio=tags.find('href=')+6
+        fim=tags.find('\"',tags.find('href=')+6)
+        endereco=tags[inicio:fim]
         link_photo='https://collections.lib.uwm.edu'+endereco[:9]+'download/'+endereco[9:]+'/size/full'
         print(link_photo)
+        counter=counter+1
         try:
-            urllib.request.urlretrieve(link_photo, dirName+'//'+name+'.jpg')
+            urllib.request.urlretrieve(link_photo, dirName+'//'+name+'_'+str(counter)+'.jpg')
         except:
             ano=name.find('19')
             ano=ano+4
-            urllib.request.urlretrieve(link_photo, dirName+'//'+name[:ano]+'.jpg')
+            urllib.request.urlretrieve(link_photo, dirName+'//'+name[:ano]+'_'+str(counter)+'.jpg')
 
 driver.quit()
