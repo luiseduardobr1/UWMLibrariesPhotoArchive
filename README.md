@@ -1,5 +1,5 @@
 # UWMLibrariesPhotoArchive
-Automatically download all historical digital photos from UWM Libraries - AGSL Digital Photo Archive. 
+Automatically download all historical digital photos from UWM Libraries - AGSL Digital Photo Archive with maximum quality resolution. 
 
 # Requirements
 * [Selenium](https://selenium-python.readthedocs.io/)
