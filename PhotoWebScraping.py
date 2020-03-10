@@ -35,7 +35,7 @@ for page in range(1,pages_number+1):
     
     soup = soup_complete_source.find(class_='Search-mainContent col-sm-8 col-lg-9')    
     
-    for line in soup.findAll(class_="SearchResult-container shared-search-box shared-box row SearchResult cdm-item-card"):
+    for line in soup.findAll(class_="SearchResult-container shared-search-box shared-box row SearchResult cdm-item-card null"):
         name=line.text
         tags=str(line)
         inicio=tags.find('href=')+6
